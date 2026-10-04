@@ -27,7 +27,7 @@ public class ListaProductos {
     //  INSERCIONES
 
 
-     */
+
     public void insertarAlInicio(Producto producto) {
         if (producto == null) {
             throw new IllegalArgumentException("El producto no puede ser nulo.");
@@ -99,5 +99,104 @@ public class ListaProductos {
         System.out.println("-------------------------------------------------------------");
         System.out.printf("TOTAL ACUMULADO: ₡%,.2f%n", calcularCostoTotalLista());
         System.out.println("=============================================================");
+    }
+    // MODIFICACIÓN DE PRODUCTOS
+
+    public boolean modificarProducto(String nombreActual,
+                                     String nuevoNombre,
+                                     double nuevoPrecio,
+                                     String nuevaCategoria,
+                                     String nuevaFechaVencimiento,
+                                     int nuevaCantidad) {
+
+        if (estaVacia()) {
+            System.out.println("La lista está vacía.");
+            return false;
+        }
+
+        Nodo actual = cabeza;
+
+        while (actual != null) {
+
+            if (nombreActual.equals(actual.producto.getNombre())) {
+
+                actual.producto.setNombre(nuevoNombre);
+                actual.producto.setPrecio(nuevoPrecio);
+                actual.producto.setCategoria(nuevaCategoria);
+                actual.producto.setFechaVencimiento(nuevaFechaVencimiento);
+                actual.producto.setCantidad(nuevaCantidad);
+
+                return true;
+            }
+
+            actual = actual.siguiente;
+        }
+
+        System.out.println("El producto no existe.");
+        return false;
+    }
+
+
+    // AGREGAR IMAGEN A UN PRODUCTO
+
+    public boolean agregarImagenProducto(String nombre, String rutaImagen) {
+
+        if (estaVacia()) {
+            System.out.println("La lista está vacía.");
+            return false;
+        }
+
+        Nodo actual = cabeza;
+
+        while (actual != null) {
+
+            if (nombre.equals(actual.producto.getNombre())) {
+
+                actual.producto.agregarImagen(rutaImagen);
+
+                return true;
+            }
+
+            actual = actual.siguiente;
+        }
+
+        System.out.println("El producto no existe.");
+        return false;
+    }
+
+
+    // ELIMINACIÓN DE PRODUCTOS
+
+    public Producto eliminarProducto(String nombre) {
+
+        if (estaVacia()) {
+            System.out.println("La lista está vacía.");
+            return null;
+        }
+
+        Nodo anterior = null;
+        Nodo actual = cabeza;
+
+        while (actual != null) {
+
+            if (nombre.equals(actual.producto.getNombre())) {
+
+                if (actual == cabeza) {
+                    cabeza = actual.siguiente;
+                } else {
+                    anterior.siguiente = actual.siguiente;
+                }
+
+                tamano--;
+
+                return actual.producto;
+            }
+
+            anterior = actual;
+            actual = actual.siguiente;
+        }
+
+        System.out.println("El producto no existe.");
+        return null;
     }
 }
