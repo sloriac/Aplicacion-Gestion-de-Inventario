@@ -19,7 +19,7 @@ public class Producto {
         this.categoria = categoria;
         this.fechaVencimiento = fechaVencimiento;
         this.cantidad = cantidad;
-        this.listaImagenes = new ArrayList();
+        this.listaImagenes = new ArrayList<>();
     }
     //Getter
     public String getNombre() {return nombre;}
