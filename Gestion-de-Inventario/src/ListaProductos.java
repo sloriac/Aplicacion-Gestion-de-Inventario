@@ -75,12 +75,16 @@ public class ListaProductos {
 
 
     public void imprimirReporte() {
+        imprimirReporte("REPORTE DE COSTOS");
+    }
+
+    public void imprimirReporte(String titulo) {
         if (estaVacia()) {
-            System.out.println("No hay productos registrados en el inventario.");
+            System.out.println("No hay productos registrados.");
             return;
         }
 
-        System.out.println("\n========== REPORTE DE COSTOS ==========");
+        System.out.println("\n========== " + titulo + " ==========");
         System.out.printf("%-4s %-20s %8s %12s %14s%n",
                 "N°", "Producto", "Cant.", "Precio", "Costo total");
         System.out.println("-------------------------------------------------------------");
