@@ -37,10 +37,19 @@ public class Tienda {
         if (clienteAtender == null) {
             return null;
         }
-        System.out.println("Atendiendo a: " + clienteAtender);
+        imprimirFactura(clienteAtender);
         return clienteAtender;
     }
     public void listarCola() {
         cola.listar();
+    }
+
+    private void imprimirFactura(Cliente cliente) {
+        System.out.println("\n========== FACTURA DE LA COMPRA ==========");
+        System.out.println("----------- DATOS DEL CLIENTE -----------");
+        System.out.println("ID: " + cliente.getId());
+        System.out.println("Nombre: " + cliente.getNombreCliente());
+        System.out.println("Prioridad: " + cliente.getPrioridad() + " Tipo de Prioridad: " + cliente.getTipoPrioridad());
+        cliente.getCarrito().imprimirReporte("DETALLE DE LA COMPRA");
     }
 }
