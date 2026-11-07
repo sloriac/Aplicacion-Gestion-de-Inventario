@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Producto {
     //Atributos
-    String nombre;
-    double precio;
-    String categoria;
-    String fechaVencimiento = null; //Comienza en null, ya que no es obligatorio que tenga fecha de vencimiento, solo si aplica
-    int cantidad; //Unidades del producto
-    ArrayList<String> listaImagenes; //Almacena la ruta de las imagenes
+    private String nombre;
+    private double precio;
+    private String categoria;
+    private String fechaVencimiento = null; //Comienza en null, ya que no es obligatorio que tenga fecha de vencimiento, solo si aplica
+    private int cantidad; //Unidades del producto
+    private ArrayList<String> listaImagenes; //Almacena la ruta de las imagenes
 
     //METODOS
     //Constructor
@@ -19,7 +19,7 @@ public class Producto {
         this.categoria = categoria;
         this.fechaVencimiento = fechaVencimiento;
         this.cantidad = cantidad;
-        this.listaImagenes = new ArrayList<>();
+        this.listaImagenes = (listaImagenes != null) ? listaImagenes : new ArrayList<>();
     }
     //Getter
     public String getNombre() {return nombre;}

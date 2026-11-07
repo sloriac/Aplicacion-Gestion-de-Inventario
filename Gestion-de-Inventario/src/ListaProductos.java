@@ -34,7 +34,7 @@ public class ListaProductos {
         }
         Nodo nuevo = new Nodo(producto);
         // El orden de estas dos líneas es importante:
-        nuevo.siguiente = cabeza;  // 1. el nuevo apunta a la antigua cabeza
+        nuevo.setSiguiente(cabeza);// 1. el nuevo apunta a la antigua cabeza
         cabeza = nuevo;            // 2. el nuevo pasa a ser la cabeza
         tamano++;
     }
@@ -52,10 +52,10 @@ public class ListaProductos {
         } else {
             // Se recorre hasta el último nodo (el que no tiene siguiente)
             Nodo actual = cabeza;
-            while (actual.siguiente != null) {
-                actual = actual.siguiente;
+            while (actual.getSiguiente() != null) {
+                actual = actual.getSiguiente();
             }
-            actual.siguiente = nuevo;
+            actual.setSiguiente(nuevo);
         }
         tamano++;
     }
@@ -67,8 +67,8 @@ public class ListaProductos {
         double total = 0;
         Nodo actual = cabeza;
         while (actual != null) {
-            total += actual.producto.calcularCostoTotal();
-            actual = actual.siguiente;
+            total += actual.getProducto().calcularCostoTotal();
+            actual = actual.getSiguiente();
         }
         return total;
     }
@@ -88,12 +88,12 @@ public class ListaProductos {
         int numero = 1;
         Nodo actual = cabeza;
         while (actual != null) {
-            Producto p = actual.producto;
+            Producto p = actual.getProducto();
             System.out.printf("%-4d %-20s %8d %,12.2f %,14.2f%n",
                     numero, p.getNombre(), p.getCantidad(),
                     p.getPrecio(), p.calcularCostoTotal());
             numero++;
-            actual = actual.siguiente;
+            actual = actual.getSiguiente();
         }
 
         System.out.println("-------------------------------------------------------------");
@@ -118,18 +118,18 @@ public class ListaProductos {
 
         while (actual != null) {
 
-            if (nombreActual.equals(actual.producto.getNombre())) {
+            if (nombreActual.equals(actual.getProducto().getNombre())) {
 
-                actual.producto.setNombre(nuevoNombre);
-                actual.producto.setPrecio(nuevoPrecio);
-                actual.producto.setCategoria(nuevaCategoria);
-                actual.producto.setFechaVencimiento(nuevaFechaVencimiento);
-                actual.producto.setCantidad(nuevaCantidad);
+                actual.getProducto().setNombre(nuevoNombre);
+                actual.getProducto().setPrecio(nuevoPrecio);
+                actual.getProducto().setCategoria(nuevaCategoria);
+                actual.getProducto().setFechaVencimiento(nuevaFechaVencimiento);
+                actual.getProducto().setCantidad(nuevaCantidad);
 
                 return true;
             }
 
-            actual = actual.siguiente;
+            actual = actual.getSiguiente();
         }
 
         System.out.println("El producto no existe.");
@@ -150,14 +150,14 @@ public class ListaProductos {
 
         while (actual != null) {
 
-            if (nombre.equals(actual.producto.getNombre())) {
+            if (nombre.equals(actual.getProducto().getNombre())) {
 
-                actual.producto.agregarImagen(rutaImagen);
+                actual.getProducto().agregarImagen(rutaImagen);
 
                 return true;
             }
 
-            actual = actual.siguiente;
+            actual = actual.getSiguiente();
         }
 
         System.out.println("El producto no existe.");
@@ -179,21 +179,21 @@ public class ListaProductos {
 
         while (actual != null) {
 
-            if (nombre.equals(actual.producto.getNombre())) {
+            if (nombre.equals(actual.getProducto().getNombre())) {
 
                 if (actual == cabeza) {
-                    cabeza = actual.siguiente;
+                    cabeza = cabeza.getSiguiente();
                 } else {
-                    anterior.siguiente = actual.siguiente;
+                    anterior.setSiguiente(actual.getSiguiente());
                 }
 
                 tamano--;
 
-                return actual.producto;
+                return actual.getProducto();
             }
 
             anterior = actual;
-            actual = actual.siguiente;
+            actual = actual.getSiguiente();
         }
 
         System.out.println("El producto no existe.");
