@@ -1,5 +1,3 @@
-import java.util.Enumeration;
-
 public class ColaClientes {
     //Clase NodoCola
     private class NodoCola {
