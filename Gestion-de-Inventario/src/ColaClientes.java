@@ -1,3 +1,4 @@
+//Cola dinamica que se encarga del orden de atencion de los clientes, en base a su prioridad
 public class ColaClientes {
     //Clase NodoCola
     private class NodoCola {
@@ -34,6 +35,9 @@ public class ColaClientes {
     public int getTamano() {return  tamano;}
     //Operaciones
     public boolean estaVacia() {return frente == null;}
+    //Se inserta ordenando por prioridad
+    //En caso de empate (misma prioridad) el nuevo a insertar va al final de los de su mismo numero de prioridad
+    //En el frente siempre queda el que hay que atender
     public void encolar(Cliente cliente) {
         if (cliente == null) {throw new IllegalArgumentException("El cliente no puede ser null.");}
         NodoCola nuevo = new NodoCola(cliente);

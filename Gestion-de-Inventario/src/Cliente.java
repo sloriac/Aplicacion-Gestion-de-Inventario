@@ -1,3 +1,4 @@
+//Clase que almacena clientes, con sus metodos estandar
 public class Cliente {
 
     //Atributos

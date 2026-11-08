@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//Rutina main que contiene el menu y permite la ejecucion del programa
+
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);

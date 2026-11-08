@@ -1,3 +1,4 @@
+//Clase que almacena y conecta las estructuras codificadas para el correcto funcionamiento del flujo de la tienda
 public class Tienda {
     //Atributos
     private ArbolProductos inventario;
@@ -40,8 +41,36 @@ public class Tienda {
         imprimirFactura(clienteAtender);
         return clienteAtender;
     }
+    //Lista la cola de clientes a atender
     public void listarCola() {
         cola.listar();
+    }
+    //Lista el inventario de toda la tienda
+    public void listarInventario() {inventario.enOrden();}
+    //Dice si no hay productos
+    public boolean inventarioVacio() {
+        if (inventario.estaVacio()) {
+            System.out.println("El inventario esta vacio.");
+            return true;
+        }
+        return false;
+    }
+    //Dice si no hay clientes
+    public boolean colaVacia() {
+        if (cola.estaVacia()) {
+            System.out.println("La cola esta vacia, no hay clientes por atender.");
+            return true;
+        }
+        return false;
+    }
+    //Elimina un producto, verifica que no este vacio, si existe lo elimina
+    public Producto eliminarProducto(String nombre) {
+        if (inventario.estaVacio()) {
+            System.out.println("El inventario esta vacio.");
+            return null;
+        }
+        Producto productoEliminar = inventario.eliminar(nombre);
+        return productoEliminar;
     }
 
     private void imprimirFactura(Cliente cliente) {

@@ -1,3 +1,4 @@
+//Lista enlazada simple de productos, almacena los productos del carrito de un cliente
 public class ListaProductos {
 
     //  ATRIBUTOS
@@ -113,6 +114,15 @@ public class ListaProductos {
                                      String nuevaFechaVencimiento,
                                      int nuevaCantidad) {
 
+        if (nombreActual == null) {
+            System.out.println("El nombre del producto esta vacio.");
+            return false;
+        }
+        if (nuevoNombre == null) {
+            System.out.println("El nombre nuevo no puede estar vacio.");
+            return false;
+        }
+
         if (estaVacia()) {
             System.out.println("La lista está vacía.");
             return false;
@@ -122,7 +132,7 @@ public class ListaProductos {
 
         while (actual != null) {
 
-            if (nombreActual.equals(actual.getProducto().getNombre())) {
+            if (nombreActual.equalsIgnoreCase(actual.getProducto().getNombre())) {
 
                 actual.getProducto().setNombre(nuevoNombre);
                 actual.getProducto().setPrecio(nuevoPrecio);
@@ -145,6 +155,11 @@ public class ListaProductos {
 
     public boolean agregarImagenProducto(String nombre, String rutaImagen) {
 
+        if (nombre == null) {
+            System.out.println("El nombre del producto no puede estar vacio.");
+            return false;
+        }
+
         if (estaVacia()) {
             System.out.println("La lista está vacía.");
             return false;
@@ -154,7 +169,7 @@ public class ListaProductos {
 
         while (actual != null) {
 
-            if (nombre.equals(actual.getProducto().getNombre())) {
+            if (nombre.equalsIgnoreCase(actual.getProducto().getNombre())) {
 
                 actual.getProducto().agregarImagen(rutaImagen);
 
@@ -173,6 +188,11 @@ public class ListaProductos {
 
     public Producto eliminarProducto(String nombre) {
 
+        if (nombre == null) {
+            System.out.println("El nombre del producto a eliminar no puede estar vacio.");
+            return null;
+        }
+
         if (estaVacia()) {
             System.out.println("La lista está vacía.");
             return null;
@@ -183,7 +203,7 @@ public class ListaProductos {
 
         while (actual != null) {
 
-            if (nombre.equals(actual.getProducto().getNombre())) {
+            if (nombre.equalsIgnoreCase(actual.getProducto().getNombre())) {
 
                 if (actual == cabeza) {
                     cabeza = cabeza.getSiguiente();

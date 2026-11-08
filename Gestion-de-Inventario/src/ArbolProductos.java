@@ -1,3 +1,4 @@
+//Arbol binario de busqueda que almacena el inventario de la tienda
 public class ArbolProductos {
     //Atributos
     private NodoArbol raiz;
@@ -12,16 +13,20 @@ public class ArbolProductos {
     private void setRaiz(NodoArbol raiz) {this.raiz = raiz;}
 
     //Operaciones
-    private boolean estaVacio() {return raiz == null;}
+    public boolean estaVacio() {return raiz == null;}
 
     public void insertar(Producto producto) {
+        if (producto == null) {
+            System.out.println("El producto no puede ser null");
+            return;
+        }
         //Primero se construye el nodo que se va a insertar - ya
         //Si esta vacio se inserta el nodo nuevo en la raiz con setRaiz - ya
         //Si no, se declaran las variables temp y padreTemp e inician ambas en la raiz - ya
         //En un ciclo se hacen los movimientos necesarios con padreTemp y temp mientras que temp != null - ya
         //Detro del ciclo, cada vez que temp se mueve se verifica si llego a un nodo cuya clave es igual a la clave del nodo nuevo - ya
         //Si se cumple se da un mensaje y se retorna prematuramente (se encontro el numero que se queria insertar) - ya
-        //Cuando el ciclo termina, se cumple que temp != null, se insertar el nodo nuevo como hijo de padreTemp
+        //Cuando el ciclo termina, se cumple que temp == null, se insertar el nodo nuevo como hijo de padreTemp
         String nombreProducto = producto.getNombre();
 
         //Constructor
@@ -37,7 +42,7 @@ public class ArbolProductos {
             if ((temp.getClave().compareToIgnoreCase(nombreProducto)) > 0) {temp = temp.getIzquierda();}
             else if ((temp.getClave().compareToIgnoreCase(nombreProducto)) < 0) {temp = temp.getDerecha();}
             else{
-                System.out.println("La clave ya esta en el arbol.\n");
+                System.out.println("El producto ya esta en el inventario.\n");
                 return;
             }
         }
@@ -163,6 +168,10 @@ public class ArbolProductos {
     }
 
     public void enOrden() {
+        if (raiz == null) {
+            System.out.println("El inventario esta vacio");
+            return;
+        }
         enOrdenRecursivo(raiz);
         System.out.println("\n");
     }

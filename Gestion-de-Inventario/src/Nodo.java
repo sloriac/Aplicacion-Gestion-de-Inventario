@@ -1,3 +1,4 @@
+//Clase nodo que permite conectar varios productos en la lista enlazada simple
 public class Nodo {
     //Atributos
     private Producto producto;
