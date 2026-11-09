@@ -81,4 +81,30 @@ public class Tienda {
         System.out.println("Prioridad: " + cliente.getPrioridad() + " Tipo de Prioridad: " + cliente.getTipoPrioridad());
         cliente.getCarrito().imprimirReporte("DETALLE DE LA COMPRA");
     }
+
+    //Permite agregar una imagen a un producto
+    public boolean agregarImagenProducto(String nombre, String rutaImagen) {
+        Producto producto = inventario.buscar(nombre);
+        if (producto != null) {
+            producto.agregarImagen(rutaImagen);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Permite modificar los atributos de un producto existente, el nombre no se modifica porque es la clave que permite buscarlo
+    public boolean modificarProducto(String nombre, double precio, String categoria, String fechaVencimiento, int cantidad) {
+        Producto producto = inventario.buscar(nombre);
+        if (producto == null) {
+            return false;
+        } else {
+            producto.setPrecio(precio);
+            producto.setCategoria(categoria);
+            producto.setFechaVencimiento(fechaVencimiento);
+            producto.setCantidad(cantidad);
+            return true;
+        }
+
+    }
 }

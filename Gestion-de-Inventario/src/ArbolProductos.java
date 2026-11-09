@@ -61,7 +61,7 @@ public class ArbolProductos {
             else if ((temp.getClave().compareToIgnoreCase(nombre) ) < 0) {temp = temp.getDerecha();}
             else {return temp;}
         }
-        System.out.println("La clave no existe en el arbol");
+        System.out.println("El producto no existe en el inventario");
         return null;
     }
 
