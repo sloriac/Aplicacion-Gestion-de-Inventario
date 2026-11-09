@@ -20,7 +20,7 @@ public class Main {
         do {
             System.out.println();
             System.out.println("");
-            System.out.println("   ****SISTEMA DE GESTIÓN DE INVENTARIO**** ");
+            System.out.println("   **** SISTEMA DE GESTIÓN DE INVENTARIO **** ");
             System.out.println("");
             System.out.println("1. Insertar producto al inicio");
             System.out.println("2. Insertar producto al final");
